@@ -8,6 +8,5 @@ import tgs.vote.vote.entity.VoteEntity;
 
 @Repository
 public interface VoteRepository extends JpaRepository<VoteEntity, Long> {
-    @Query("SELECT v FROM tb_vote v WHERE v.vote_creator = :voteCreator")
     List<VoteEntity> findByVoteCreator(String voteCreator);
 }
