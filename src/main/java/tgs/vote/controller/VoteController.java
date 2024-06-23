@@ -16,7 +16,6 @@ public class VoteController {
 
     @GetMapping("/vote/list")
     List<VoteEntity> getVoteList() {
-        List<VoteEntity> voteListFromSupabase = supabaseApi.getVoteList();
         List<VoteEntity> voteListFromRepository = voteService.getVoteList();
 
         return voteListFromRepository;
