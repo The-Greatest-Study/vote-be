@@ -1,4 +1,4 @@
-package tgs.vote.api.config;
+package tgs.vote.infrastructure.external.config;
 
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;

@@ -1,14 +1,13 @@
-package tgs.vote;
+package tgs.vote.infrastructure.persistence;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
+import java.time.Instant;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import java.time.Instant;
 
 @Data
 @EntityListeners(AuditingEntityListener.class)
@@ -18,8 +17,13 @@ public abstract class BaseEntity {
     @CreatedDate
     private Instant createdAt;
 
+    @Column(name = "create_user", updatable = false)
+    private Long createUser;
+
     @Column(name = "updated_at")
     @LastModifiedDate
     private Instant updatedAt;
 
+    @Column(name = "update_user")
+    private Long updateUser;
 }

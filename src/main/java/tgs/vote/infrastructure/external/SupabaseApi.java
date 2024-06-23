@@ -1,11 +1,11 @@
-package tgs.vote.api;
+package tgs.vote.infrastructure.external;
 
 import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
-import tgs.vote.api.config.SupabaseApiConfig;
-import tgs.vote.vote.entity.VoteEntity;
+import tgs.vote.domain.vote.entity.VoteEntity;
+import tgs.vote.infrastructure.external.config.SupabaseApiConfig;
 
 @FeignClient(
         name = "supabase",

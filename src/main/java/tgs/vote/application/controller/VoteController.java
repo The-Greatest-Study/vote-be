@@ -1,23 +1,20 @@
-package tgs.vote.controller;
+package tgs.vote.application.controller;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tgs.vote.api.SupabaseApi;
-import tgs.vote.vote.entity.VoteEntity;
-import tgs.vote.vote.service.VoteService;
+import tgs.vote.domain.vote.model.VoteGetListResponse;
+import tgs.vote.domain.vote.service.VoteService;
 
 @RequiredArgsConstructor
 @RestController
 public class VoteController {
-    private final SupabaseApi supabaseApi;
     private final VoteService voteService;
 
     @GetMapping("/vote/list")
-    List<VoteEntity> getVoteList() {
-        List<VoteEntity> voteListFromRepository = voteService.getVoteList();
+    List<VoteGetListResponse> getVoteList() {
 
-        return voteListFromRepository;
+        return voteService.getVoteList();
     }
 }
