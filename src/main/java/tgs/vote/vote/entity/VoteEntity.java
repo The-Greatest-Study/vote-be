@@ -2,9 +2,8 @@ package tgs.vote.vote.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.Getter;
-
 import java.time.LocalDateTime;
+import lombok.Getter;
 
 @Getter
 @Entity(name = "tb_vote")
