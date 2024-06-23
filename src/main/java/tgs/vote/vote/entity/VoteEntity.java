@@ -1,8 +1,12 @@
 package tgs.vote.vote.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.Getter;
 
 @Getter
@@ -21,4 +25,7 @@ public class VoteEntity {
     private LocalDateTime voteCreateDatetime;
     private LocalDateTime voteStartDatetime;
     private LocalDateTime voteEndDatetime;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<QuestionEntity> questions = new ArrayList<>();
 }
