@@ -1,9 +1,9 @@
-package tgs.vote.infrastructure.external.config;
+package tgs.vote.adapter.out.config;
 
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 
-public class SupabaseApiConfig {
+public class SupabaseFeignClientConfig {
     @Bean
     public RequestInterceptor requestInterceptor() {
         return requestTemplate -> {

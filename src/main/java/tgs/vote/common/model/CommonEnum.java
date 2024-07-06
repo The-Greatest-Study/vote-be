@@ -1,4 +1,4 @@
-package tgs.vote.util;
+package tgs.vote.common.model;
 
 import lombok.Getter;
 import lombok.experimental.UtilityClass;

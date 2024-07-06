@@ -1,15 +1,13 @@
-package tgs.vote.domain.vote.entity;
+package tgs.vote.domain.vote;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import java.time.LocalDateTime;
+import lombok.Builder;
 import lombok.Getter;
-import tgs.vote.infrastructure.persistence.BaseEntity;
 
+@Builder
 @Getter
-@Entity(name = "tb_vote")
-public class VoteEntity extends BaseEntity {
-    @Id private Long voteId;
+public class Vote {
+    private Long voteId;
     private String voteTitle;
     private String voteDescription;
     private String voteThumbnail;
