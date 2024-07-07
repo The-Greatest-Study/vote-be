@@ -19,7 +19,7 @@ public class VoteController {
         List<Vote> results = getVoteListUseCase.getVoteList();
         List<VoteGetListResponse> responses =
                 results.stream().map(VoteGetListResponse::from).toList();
-        throw new Exception();
-        //        return SuccessResponse.of(responses);
+
+        return SuccessResponse.of(responses);
     }
 }
