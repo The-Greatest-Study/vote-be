@@ -1,25 +1,32 @@
 package tgs.vote.adapter.out.model;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 
 @Builder(access = AccessLevel.PRIVATE)
-public class ErrorResponse {
-    private LocalDateTime errorDateTime;
+@Getter
+public class ErrorResponse extends ResponseDTO {
     private List<ErrorDetail> errorDetails;
 
-    @Builder
+    @Builder(access = AccessLevel.PRIVATE)
+    @Getter
     public static class ErrorDetail {
         private String code;
         private String message;
+
+        public static ErrorDetail of(String code, String message) {
+            return ErrorDetail.builder().code(code).message(message).build();
+        }
     }
 
-    public static ErrorResponse create(List<ErrorDetail> errorDetails) {
-        return ErrorResponse.builder()
-                .errorDateTime(LocalDateTime.now())
-                .errorDetails(errorDetails)
-                .build();
+    public static ErrorResponse of(String code, String message) {
+        ErrorDetail errorDetail = ErrorDetail.of(code, message);
+        return ErrorResponse.of(List.of(errorDetail));
+    }
+
+    public static ErrorResponse of(List<ErrorDetail> errorDetails) {
+        return ErrorResponse.builder().errorDetails(errorDetails).build();
     }
 }

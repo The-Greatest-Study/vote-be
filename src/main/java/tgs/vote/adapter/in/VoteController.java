@@ -15,9 +15,11 @@ public class VoteController {
     private final GetVoteListUseCase getVoteListUseCase;
 
     @GetMapping("/vote/list")
-    SuccessResponse<List<VoteGetListResponse>> getVoteList() {
+    SuccessResponse<List<VoteGetListResponse>> getVoteList() throws Exception {
         List<Vote> results = getVoteListUseCase.getVoteList();
-        List<VoteGetListResponse> responses = results.stream().map(VoteGetListResponse::from).toList();
-        return SuccessResponse.create(responses);
+        List<VoteGetListResponse> responses =
+                results.stream().map(VoteGetListResponse::from).toList();
+        throw new Exception();
+        //        return SuccessResponse.of(responses);
     }
 }
