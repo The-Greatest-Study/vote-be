@@ -1,4 +1,4 @@
-package tgs.vote.vote.entity;
+package tgs.vote.domain.vote.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.EmbeddedId;
@@ -7,7 +7,7 @@ import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
-import tgs.vote.vote.enums.QuestionType;
+import tgs.vote.domain.vote.enums.QuestionType;
 
 @Getter
 @Entity(name = "tb_question")
@@ -18,5 +18,5 @@ public class QuestionEntity {
     private String canAddAnswerChoiceYn;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AnswerChoiceEntity> answerChoices = new ArrayList<>();
+    private List<ChoiceEntity> answerChoices = new ArrayList<>();
 }

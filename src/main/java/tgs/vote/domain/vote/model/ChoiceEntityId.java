@@ -1,10 +1,10 @@
-package tgs.vote.vote.entity;
+package tgs.vote.domain.vote.model;
 
 import jakarta.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class AnswerChoiceEntityId implements Serializable {
+public class ChoiceEntityId implements Serializable {
     private Long voteId;
     private Long questionId;
     private Long answerChoiceId;

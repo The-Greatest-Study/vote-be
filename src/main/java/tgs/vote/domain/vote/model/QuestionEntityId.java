@@ -1,4 +1,4 @@
-package tgs.vote.vote.entity;
+package tgs.vote.domain.vote.model;
 
 import jakarta.persistence.Embeddable;
 import java.io.Serializable;
