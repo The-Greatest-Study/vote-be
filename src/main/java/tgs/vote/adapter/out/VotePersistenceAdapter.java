@@ -3,9 +3,9 @@ package tgs.vote.adapter.out;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import tgs.vote.adapter.out.model.vote.VoteEntity;
+import tgs.vote.adapter.out.model.persistence.vote.VoteEntity;
 import tgs.vote.application.out.VotePort;
-import tgs.vote.domain.vote.Vote;
+import tgs.vote.domain.vote.model.Vote;
 
 @Component
 @RequiredArgsConstructor

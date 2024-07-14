@@ -3,7 +3,7 @@ package tgs.vote.adapter.out;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import tgs.vote.adapter.out.model.vote.VoteEntity;
+import tgs.vote.adapter.out.model.persistence.vote.VoteEntity;
 
 @Repository
 public interface VoteJpaRepository extends JpaRepository<VoteEntity, Long> {
