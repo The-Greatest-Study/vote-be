@@ -1,16 +1,14 @@
-package tgs.vote.adapter.out.model.vote;
+package tgs.vote.adapter.in.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import java.time.LocalDateTime;
 import lombok.Getter;
-import tgs.vote.adapter.out.model.BaseEntity;
-import tgs.vote.domain.vote.model.Vote;
+import tgs.vote.adapter.out.model.persistence.vote.VoteEntity;
+import tgs.vote.domain.vote.model.VoteQuestion;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
-@Entity(name = "tb_vote")
-public class VoteEntity extends BaseEntity {
-    @Id private Long voteId;
+public class VoteCreateRequest {
     private String voteTitle;
     private String voteDescription;
     private String voteThumbnail;
@@ -24,8 +22,10 @@ public class VoteEntity extends BaseEntity {
     private LocalDateTime voteStartDatetime;
     private LocalDateTime voteEndDatetime;
 
-    public Vote toDomainEntity() {
-        return Vote.builder()
+    List<VoteQuestion> voteQuestionList;
+
+    public VoteEntity toVoteEntity(Long voteId) {
+        return VoteEntity.builder()
                 .voteId(voteId)
                 .voteTitle(voteTitle)
                 .voteDescription(voteDescription)

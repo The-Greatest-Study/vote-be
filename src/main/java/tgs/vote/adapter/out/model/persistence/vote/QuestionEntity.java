@@ -1,22 +1,23 @@
-package tgs.vote.domain.vote.model;
+package tgs.vote.adapter.out.model.persistence.vote;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
+
+import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import tgs.vote.domain.vote.enums.QuestionType;
 
 @Getter
+@Builder
+@RequiredArgsConstructor
 @Entity(name = "tb_question")
 public class QuestionEntity {
     @EmbeddedId private QuestionEntityId id;
-    private String question;
+    private String questionContent;
     private QuestionType questionType;
     private String canAddAnswerChoiceYn;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ChoiceEntity> answerChoices = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<ChoiceEntity> questionChoiceList = new ArrayList<>();
 }

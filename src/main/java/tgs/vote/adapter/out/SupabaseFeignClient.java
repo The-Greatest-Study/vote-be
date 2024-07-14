@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import tgs.vote.adapter.out.config.SupabaseFeignClientConfig;
-import tgs.vote.adapter.out.model.vote.VoteEntity;
+import tgs.vote.adapter.out.model.persistence.vote.VoteEntity;
 
 @FeignClient(
         name = "supabase",
