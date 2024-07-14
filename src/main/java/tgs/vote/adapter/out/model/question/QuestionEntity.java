@@ -1,11 +1,9 @@
 package tgs.vote.adapter.out.model.question;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import tgs.vote.adapter.out.model.BaseEntity;
+import tgs.vote.domain.question.QuestionType;
 
 @Getter
 @Entity(name = "tb_question")
@@ -15,8 +13,9 @@ public class QuestionEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
     private Long voteId;
-    private String question;
+    private String questionContent;
+    @Enumerated(EnumType.STRING)
     private QuestionType questionType;
-    private String canAddAnserChoiceYn;
+    private String canAddChoiceYn;
 
 }

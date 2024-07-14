@@ -1,4 +1,4 @@
-package tgs.vote.adapter.out.model.question;
+package tgs.vote.domain.question;
 
 public enum QuestionType {
     SINGLE_CHOICE("단수선택"),
