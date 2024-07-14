@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tgs.vote.application.in.GetVoteListUseCase;
 import tgs.vote.application.out.VotePort;
-import tgs.vote.domain.vote.Vote;
+import tgs.vote.domain.vote.model.Vote;
 
 @RequiredArgsConstructor
 @Service
