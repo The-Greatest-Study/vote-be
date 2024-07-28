@@ -19,10 +19,7 @@ jpa:
 
 # database
 datasource:
-  driver-class-name: org.postgresql.Driver
-  url: jdbc:postgresql://aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres
-  username: postgres.utiebnnujtpycwrzeipk
-  password: SudtyGo123!!
+
 
 slack:
   token:
