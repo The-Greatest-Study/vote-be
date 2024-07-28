@@ -4,14 +4,14 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import tgs.vote.adapter.mapper.VoteMapper;
-import tgs.vote.adapter.out.impl.VoteJpaRepository;
-import tgs.vote.adapter.out.model.persistence.vote.VoteEntity;
+import tgs.vote.adapter.model.persistence.vote.VoteEntity;
+import tgs.vote.adapter.out.persistance.VoteJpaRepository;
 import tgs.vote.application.out.VotePort;
 import tgs.vote.domain.vote.Vote;
 
 @Component
 @RequiredArgsConstructor
-public class VotePersistenceAdapter implements VotePort {
+public class VoteAdapter implements VotePort {
     private final VoteJpaRepository voteJpaRepository;
     private final VoteMapper voteMapper;
 
