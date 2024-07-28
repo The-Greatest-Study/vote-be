@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tgs.vote.adapter.out.config.SlackConfig;
-import tgs.vote.adapter.out.model.persistence.user.SlackUser;
+import tgs.vote.adapter.model.persistence.user.SlackUser;
 
 import java.util.Collections;
 import java.util.List;

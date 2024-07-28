@@ -1,4 +1,4 @@
-package tgs.vote.adapter.out.model.persistence.user;
+package tgs.vote.adapter.model.persistence.user;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
