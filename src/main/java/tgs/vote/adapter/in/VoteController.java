@@ -3,14 +3,14 @@ package tgs.vote.adapter.in;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import tgs.vote.adapter.in.model.VoteCreateRequest;
 import tgs.vote.adapter.mapper.VoteMapper;
-import tgs.vote.adapter.out.model.web.SuccessResponse;
-import tgs.vote.adapter.out.model.web.VoteCreateResponse;
-import tgs.vote.adapter.out.model.web.VoteGetListResponse;
-import tgs.vote.application.in.CreateVoteInCommand;
+import tgs.vote.adapter.model.web.SuccessResponse;
+import tgs.vote.adapter.model.web.vote.VoteCreateRequest;
+import tgs.vote.adapter.model.web.vote.VoteCreateResponse;
+import tgs.vote.adapter.model.web.vote.VoteGetListResponse;
 import tgs.vote.application.in.CreateVoteUseCase;
 import tgs.vote.application.in.GetVoteListUseCase;
+import tgs.vote.application.model.vote.CreateVoteInCommand;
 import tgs.vote.domain.vote.Vote;
 
 @RequiredArgsConstructor

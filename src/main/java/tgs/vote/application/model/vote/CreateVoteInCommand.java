@@ -1,4 +1,4 @@
-package tgs.vote.application.in;
+package tgs.vote.application.model.vote;
 
 import java.util.List;
 import tgs.vote.domain.vote.Question;

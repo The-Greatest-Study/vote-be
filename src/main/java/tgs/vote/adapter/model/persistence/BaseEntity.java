@@ -1,4 +1,4 @@
-package tgs.vote.adapter.out.model.persistence;
+package tgs.vote.adapter.model.persistence;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

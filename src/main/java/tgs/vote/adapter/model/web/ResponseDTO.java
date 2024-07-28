@@ -1,4 +1,4 @@
-package tgs.vote.adapter.out.model.web;
+package tgs.vote.adapter.model.web;
 
 import java.time.LocalDateTime;
 import lombok.Getter;
