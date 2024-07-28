@@ -1,1 +1,28 @@
-safe_content_here
+spring:
+  application:
+    name: vote
+  output:
+    ansi:
+      enabled: always
+
+# logging
+logging:
+  level:
+    root: info
+
+# jpa
+jpa:
+  show-sql: true
+  properties:
+    hibernate:
+      format_sql: true
+
+# database
+datasource:
+  driver-class-name: org.postgresql.Driver
+  url: jdbc:postgresql://aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres
+  username: postgres.utiebnnujtpycwrzeipk
+  password: SudtyGo123!!
+
+slack:
+  token: xapp-1-A07CUDUE140-7421641963908-a4e94bf4ec8cce4d666df408d3d64189395ab502a731d6d331e5137d659e2d8e
