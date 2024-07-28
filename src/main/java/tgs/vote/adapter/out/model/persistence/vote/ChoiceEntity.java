@@ -1,17 +1,13 @@
 package tgs.vote.adapter.out.model.persistence.vote;
 
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import jakarta.persistence.Id;
+import lombok.Data;
 
-@Getter
-@Builder
-@RequiredArgsConstructor
+@Data
 @Entity(name = "tb_choice")
 public class ChoiceEntity {
-
-    @EmbeddedId private ChoiceEntityId id;
+    @Id private Long choiceId;
+    private Long questionId;
     private String choiceContent;
 }

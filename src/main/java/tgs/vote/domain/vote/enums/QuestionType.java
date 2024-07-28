@@ -2,7 +2,6 @@ package tgs.vote.domain.vote.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.experimental.UtilityClass;
 
 @Getter
 @AllArgsConstructor
