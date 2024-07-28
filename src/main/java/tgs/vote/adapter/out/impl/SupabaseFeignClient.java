@@ -1,4 +1,4 @@
-package tgs.vote.adapter.out;
+package tgs.vote.adapter.out.impl;
 
 import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;

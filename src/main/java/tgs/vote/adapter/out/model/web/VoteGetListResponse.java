@@ -3,7 +3,7 @@ package tgs.vote.adapter.out.model.web;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
-import tgs.vote.domain.vote.model.Vote;
+import tgs.vote.domain.vote.Vote;
 
 @Builder(access = AccessLevel.PRIVATE)
 @Getter

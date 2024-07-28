@@ -1,16 +1,15 @@
-package tgs.vote.adapter.out.model.persistence.vote;
+package tgs.vote.domain.vote;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import java.util.List;
 import lombok.Data;
 import tgs.vote.domain.vote.enums.QuestionType;
 
 @Data
-@Entity(name = "tb_question")
-public class QuestionEntity {
-    @Id private Long questionId;
+public class Question {
+    private Long questionId;
     private Long voteId;
     private String questionContent;
     private QuestionType questionType;
     private String canAddAnswerChoiceYn;
+    private List<Choice> questionChoiceList;
 }

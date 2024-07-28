@@ -62,6 +62,11 @@ tasks.named('test') {
 
 tasks.withType(JavaCompile).configureEach {
 	options.annotationProcessorPath = configurations.annotationProcessor
+	options.compilerArgs += [
+		'-Amapstruct.defaultComponentModel=spring',
+		'-Amapstruct.unmappedTargetPolicy=IGNORE',
+		'-Amapstruct.unmappedSourcePolicy=IGNORE'
+	]
 }
 
 spotless {
@@ -73,5 +78,10 @@ spotless {
 		indentWithSpaces(4)
 		trimTrailingWhitespace()
 		endWithNewline()
+	}
+
+	groovyGradle {
+		target '*.gradle', 'src/**/*.gradle'
+		greclipse()
 	}
 }
