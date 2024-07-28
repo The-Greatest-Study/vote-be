@@ -25,4 +25,4 @@ datasource:
   password: SudtyGo123!!
 
 slack:
-  token: xapp-1-A07CUDUE140-7421641963908-a4e94bf4ec8cce4d666df408d3d64189395ab502a731d6d331e5137d659e2d8e
+  token:
