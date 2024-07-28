@@ -3,7 +3,7 @@ package tgs.vote.adapter.out.model.user;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Getter;
-import tgs.vote.adapter.out.model.BaseEntity;
+import tgs.vote.adapter.out.model.persistence.BaseEntity;
 
 @Getter
 @Entity(name = "tb_user")
