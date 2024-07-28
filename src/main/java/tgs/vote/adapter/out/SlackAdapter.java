@@ -3,6 +3,7 @@ package tgs.vote.adapter.out;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tgs.vote.adapter.model.persistence.user.SlackMember;
 import tgs.vote.adapter.out.config.SlackConfig;
 import tgs.vote.adapter.model.persistence.user.SlackUser;
 
@@ -21,9 +22,10 @@ public class SlackAdapter {
         this.slackConfig = slackConfig;
     }
 
-    public List<SlackUser> getSlackUserList() throws Exception {
+    public List<SlackMember> getSlackUserMemberList() throws Exception {
         String response = slackClient.getSlackUserList(slackConfig.getSlackToken());
         ObjectMapper mapper = new ObjectMapper();
-        return Collections.singletonList(mapper.readValue(response, SlackUser.class));
+        SlackUser slackUser = (SlackUser) Collections.singletonList(mapper.readValue(response, SlackUser.class));
+        return slackUser.getMembers();
     }
 }

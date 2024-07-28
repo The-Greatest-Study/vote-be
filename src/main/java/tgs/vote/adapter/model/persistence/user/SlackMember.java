@@ -1,7 +1,9 @@
 package tgs.vote.adapter.model.persistence.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
+@Getter
 public class SlackMember {
 
         private String id;
@@ -35,5 +37,13 @@ public class SlackMember {
         private boolean isAppUser;
         @JsonProperty("has_2fa")
         private boolean has2fa;
+
+        public String getEmail() {
+            return profile.getEmail();
+        }
+
+        public String getImage() {
+            return profile.getImage24();
+        }
 
 }

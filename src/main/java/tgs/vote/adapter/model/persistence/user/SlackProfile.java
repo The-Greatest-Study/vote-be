@@ -1,7 +1,9 @@
 package tgs.vote.adapter.model.persistence.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
+@Getter
 public class SlackProfile {
     @JsonProperty("avatar_hash")
     private String avatarHash;
