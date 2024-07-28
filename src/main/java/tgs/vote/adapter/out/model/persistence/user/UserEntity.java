@@ -4,7 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import tgs.vote.adapter.out.model.persistence.BaseEntity;
 
-@Entity
+
+@Entity(name = "tb_user")
 public class UserEntity extends BaseEntity {
 
     @Id

@@ -1,4 +1,4 @@
-package tgs.vote.adapter.out.client;
+package tgs.vote.adapter.out.impl;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

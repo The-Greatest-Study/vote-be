@@ -2,10 +2,9 @@ package tgs.vote.adapter.out;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import tgs.vote.adapter.out.config.SlackConfig;
-import tgs.vote.adapter.out.model.user.SlackUser;
+import tgs.vote.adapter.out.model.persistence.user.SlackUser;
 
 import java.util.Collections;
 import java.util.List;

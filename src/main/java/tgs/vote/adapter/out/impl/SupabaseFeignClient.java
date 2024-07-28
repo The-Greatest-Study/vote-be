@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:src/main/java/tgs/vote/adapter/out/impl/SupabaseFeignClient.java
 package tgs.vote.adapter.out.impl;
-========
-package tgs.vote.adapter.out.client;
->>>>>>>> f8b5d91b83a8926a6861907326a3be25f93a09b4:src/main/java/tgs/vote/adapter/out/client/SupabaseFeignClient.java
 
 import java.util.List;
 
