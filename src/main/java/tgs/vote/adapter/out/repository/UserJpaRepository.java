@@ -1,4 +1,4 @@
-package tgs.vote.adapter.out;
+package tgs.vote.adapter.out.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
