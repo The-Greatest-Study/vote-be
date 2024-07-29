@@ -2,38 +2,44 @@ package tgs.vote.adapter.model.persistence.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SlackMember {
-
-        private String id;
+public record SlackMember(
+        String id,
         @JsonProperty("team_id")
-        private String teamId;
-        private String name;
-        private boolean deleted;
-        private String color;
+        String teamId,
+        String name,
+        boolean deleted,
+        String color,
         @JsonProperty("real_name")
-        private String realName;
-        private String tz;
+        String realName,
+        String tz,
         @JsonProperty("tz_label")
-        private String tzLabel;
+        String tzLabel,
         @JsonProperty("tz_offset")
-        private int tzOffset;
-        private SlackProfile profile;
+        int tzOffset,
+        SlackProfile profile,
         @JsonProperty("is_admin")
-        private boolean isAdmin;
+        boolean isAdmin,
         @JsonProperty("is_owner")
-        private boolean isOwner;
+        boolean isOwner,
         @JsonProperty("is_primary_owner")
-        private boolean isPrimaryOwner;
+        boolean isPrimaryOwner,
         @JsonProperty("is_restricted")
-        private boolean isRestricted;
+        boolean isRestricted,
         @JsonProperty("is_ultra_restricted")
-        private boolean isUltraRestricted;
+        boolean isUltraRestricted,
         @JsonProperty("is_bot")
-        private boolean isBot;
-        private long updated;
+        boolean isBot,
+        long updated,
         @JsonProperty("is_app_user")
-        private boolean isAppUser;
+        boolean isAppUser,
         @JsonProperty("has_2fa")
-        private boolean has2fa;
+        boolean has2fa
+) {
+    public String email() {
+        return profile.email();
+    }
 
+    public String image() {
+        return profile.image192();
+    }
 }
