@@ -6,10 +6,10 @@ import lombok.Getter;
 
 @Builder(access = AccessLevel.PRIVATE)
 @Getter
-public class UserCreateResponse {
+public class SlackUserCreateResponse {
     private Long userId;
 
-    public static UserCreateResponse from(Long userId) {
-        return UserCreateResponse.builder().userId(userId).build();
+    public static SlackUserCreateResponse from(Long userId) {
+        return SlackUserCreateResponse.builder().userId(userId).build();
     }
 }

@@ -11,7 +11,6 @@ import tgs.vote.adapter.out.config.SupabaseFeignClientConfig;
 public interface SlackClient {
 
     @GetMapping("/users.info")
-    SlackUserResponse getUserInfo(@RequestParam("user") String userId);
+    SlackUserResponse getUserInfo(@RequestParam("user") String slackToken);
 
-    
 }
