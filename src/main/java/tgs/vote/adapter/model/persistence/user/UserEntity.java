@@ -1,26 +1,30 @@
 package tgs.vote.adapter.model.persistence.user;
 
-import com.slack.api.Slack;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import lombok.NoArgsConstructor;
 import tgs.vote.adapter.model.persistence.BaseEntity;
 
 @Entity(name = "tb_user")
+@NoArgsConstructor
 public class UserEntity extends BaseEntity {
-    @Id private Long userId;
+    @Id
+    private Long userId;
     private String providerId;
     private String teamId;
     private String name;
     private String email;
     private String image;
 
+    public UserEntity(String providerId, String teamId, String name, String email, String image) {
+        this.providerId = providerId;
+        this.teamId = teamId;
+        this.name = name;
+        this.email = email;
+        this.image = image;
+    }
+
     public static UserEntity from(SlackMember slackMember) {
-        UserEntity userEntity = new UserEntity();
-        userEntity.providerId = slackMember.getId();
-        userEntity.teamId = slackMember.getTeamId();
-        userEntity.name = slackMember.getName();
-        userEntity.email = slackMember.getEmail();
-        userEntity.image = slackMember.getImage();
-        return userEntity;
+        return new UserEntity(slackMember.id(), slackMember.teamId(), slackMember.name(), slackMember.email(), slackMember.image());
     }
 }
