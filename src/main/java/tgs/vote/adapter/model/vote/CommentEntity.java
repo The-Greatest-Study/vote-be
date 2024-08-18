@@ -8,8 +8,7 @@ import tgs.vote.adapter.model.BaseEntity;
 @Data
 @Entity(name = "tb_comment")
 public class CommentEntity extends BaseEntity {
-    @Id
-    private Long commentId;
+    @Id private Long commentId;
     private String comment;
     private Long userId;
     private Long voteId;
