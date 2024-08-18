@@ -1,7 +1,7 @@
 package tgs.vote.adapter.mapper;
 
 import org.mapstruct.Mapper;
-import tgs.vote.adapter.model.persistence.vote.QuestionEntity;
+import tgs.vote.adapter.model.vote.QuestionEntity;
 import tgs.vote.domain.vote.Question;
 
 @Mapper

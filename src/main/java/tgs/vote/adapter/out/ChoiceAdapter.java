@@ -3,7 +3,7 @@ package tgs.vote.adapter.out;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import tgs.vote.adapter.mapper.ChoiceMapper;
-import tgs.vote.adapter.model.persistence.vote.ChoiceEntity;
+import tgs.vote.adapter.model.vote.ChoiceEntity;
 import tgs.vote.adapter.out.persistance.ChoiceJpaRepository;
 import tgs.vote.application.out.ChoicePort;
 import tgs.vote.domain.vote.Choice;

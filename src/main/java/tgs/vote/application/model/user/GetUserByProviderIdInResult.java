@@ -1,11 +1,12 @@
-package tgs.vote.domain.user;
+package tgs.vote.application.model.user;
 
 import lombok.Builder;
 import lombok.Getter;
 
 @Builder
 @Getter
-public class User {
+public class GetUserByProviderIdInResult {
+
     private Long userId;
     private String providerId;
     private String teamId;

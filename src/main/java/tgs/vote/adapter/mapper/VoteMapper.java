@@ -5,8 +5,8 @@ import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-import tgs.vote.adapter.model.persistence.vote.VoteEntity;
-import tgs.vote.adapter.model.web.vote.VoteCreateRequest;
+import tgs.vote.adapter.model.vote.VoteCreateRequest;
+import tgs.vote.adapter.model.vote.VoteEntity;
 import tgs.vote.application.model.vote.CreateVoteInCommand;
 import tgs.vote.domain.vote.Vote;
 

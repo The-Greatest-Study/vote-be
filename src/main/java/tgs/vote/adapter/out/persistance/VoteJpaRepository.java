@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import tgs.vote.adapter.model.persistence.vote.VoteEntity;
+import tgs.vote.adapter.model.vote.VoteEntity;
 
 @Repository
 public interface VoteJpaRepository extends JpaRepository<VoteEntity, Long> {
