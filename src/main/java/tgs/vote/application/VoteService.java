@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 import tgs.vote.application.in.CreateVoteUseCase;
 import tgs.vote.application.in.GetVoteListUseCase;
 import tgs.vote.application.model.vote.CreateVoteInCommand;
-import tgs.vote.application.out.ChoicePort;
-import tgs.vote.application.out.QuestionPort;
 import tgs.vote.application.out.VotePort;
 import tgs.vote.domain.vote.Vote;
 
@@ -16,8 +14,6 @@ import tgs.vote.domain.vote.Vote;
 @Service
 public class VoteService implements GetVoteListUseCase, CreateVoteUseCase {
     private final VotePort votePort;
-    private final QuestionPort questionPort;
-    private final ChoicePort choicePort;
 
     public List<Vote> getVoteList() {
         return votePort.getVoteListByCreatorId(1L);
