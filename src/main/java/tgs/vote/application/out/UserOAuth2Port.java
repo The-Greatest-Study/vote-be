@@ -1,7 +1,8 @@
 package tgs.vote.application.out;
 
-import tgs.vote.domain.user.User;
+import tgs.vote.application.model.user.LoginInResult;
+import tgs.vote.application.model.user.LoginOutCommand;
 
 public interface UserOAuth2Port {
-    User getUserInfo(String authorizationCode);
+    LoginInResult login(LoginOutCommand command);
 }

@@ -1,9 +1,9 @@
-package tgs.vote.adapter.model.persistence.vote;
+package tgs.vote.adapter.model.vote;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
-import tgs.vote.adapter.model.persistence.BaseEntity;
+import tgs.vote.adapter.model.BaseEntity;
 import tgs.vote.domain.vote.enums.QuestionType;
 
 @Data

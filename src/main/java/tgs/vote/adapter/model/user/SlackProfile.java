@@ -1,4 +1,4 @@
-package tgs.vote.adapter.model.persistence.user;
+package tgs.vote.adapter.model.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -17,7 +17,4 @@ public record SlackProfile(
         @JsonProperty("image_72") String image72,
         @JsonProperty("image_192") String image192,
         @JsonProperty("image_512") String image512,
-        String team
-) {
-}
-
+        String team) {}

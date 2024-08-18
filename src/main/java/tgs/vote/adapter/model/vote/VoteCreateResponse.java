@@ -1,4 +1,4 @@
-package tgs.vote.adapter.model.web.vote;
+package tgs.vote.adapter.model.vote;
 
 import lombok.AccessLevel;
 import lombok.Builder;

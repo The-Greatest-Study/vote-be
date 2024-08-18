@@ -1,15 +1,14 @@
-package tgs.vote.adapter.model.persistence.user;
+package tgs.vote.adapter.model.user;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.NoArgsConstructor;
-import tgs.vote.adapter.model.persistence.BaseEntity;
+import tgs.vote.adapter.model.BaseEntity;
 
 @Entity(name = "tb_user")
 @NoArgsConstructor
 public class UserEntity extends BaseEntity {
-    @Id
-    private Long userId;
+    @Id private Long userId;
     private String providerId;
     private String teamId;
     private String name;
@@ -25,6 +24,11 @@ public class UserEntity extends BaseEntity {
     }
 
     public static UserEntity from(SlackMember slackMember) {
-        return new UserEntity(slackMember.id(), slackMember.teamId(), slackMember.name(), slackMember.email(), slackMember.image());
+        return new UserEntity(
+                slackMember.id(),
+                slackMember.teamId(),
+                slackMember.name(),
+                slackMember.email(),
+                slackMember.image());
     }
 }

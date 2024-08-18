@@ -1,4 +1,4 @@
-package tgs.vote.adapter.model.web.vote;
+package tgs.vote.adapter.model.vote;
 
 import java.time.LocalDateTime;
 import java.util.List;
