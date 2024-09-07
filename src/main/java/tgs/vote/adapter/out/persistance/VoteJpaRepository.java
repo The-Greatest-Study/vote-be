@@ -7,9 +7,11 @@ import org.springframework.stereotype.Repository;
 import tgs.vote.adapter.model.vote.VoteEntity;
 
 @Repository
-public interface VoteJpaRepository extends JpaRepository<VoteEntity, Long> {
+public interface VoteJpaRepository extends JpaRepository<VoteEntity, Long>, VoteCustomJpaRepository {
     List<VoteEntity> findByVoteCreator(long voteCreator);
 
     @Query(value = "SELECT MAX(vote_id) FROM tb_vote", nativeQuery = true)
     Long findMaxId();
+
+    VoteEntity findByVoteId(long voteId);
 }

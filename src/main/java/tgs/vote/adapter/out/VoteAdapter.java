@@ -3,6 +3,7 @@ package tgs.vote.adapter.out;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 import tgs.vote.adapter.mapper.ChoiceMapper;
 import tgs.vote.adapter.mapper.QuestionMapper;
 import tgs.vote.adapter.mapper.VoteMapper;
@@ -53,5 +54,21 @@ public class VoteAdapter implements VotePort {
         List<VoteEntity> voteEntityList = voteJpaRepository.findByVoteCreator(creatorId);
 
         return voteMapper.toVotes(voteEntityList);
+    }
+
+    @Override
+    public Vote getVoteDetail(Long voteId) {
+//        VoteDetailResult detailResult =  voteJpaRepository.findDetailByVoteId(id);
+        VoteEntity voteDetail = voteJpaRepository.findByVoteId(voteId);
+
+        List<QuestionEntity> questionEntities = questionJpaRepository.findByVoteId(voteId);
+
+        if (!CollectionUtils.isEmpty(questionEntities)) {
+            List<Long> questionIds = questionEntities.stream().map(QuestionEntity::getQuestionId).toList();
+
+            List<ChoiceEntity> choiceEntities = choiceJpaRepository.findByQuestionIdIn(questionIds);
+        }
+
+        return null;
     }
 }

@@ -10,6 +10,7 @@ import tgs.vote.adapter.model.vote.VoteCreateResponse;
 import tgs.vote.adapter.model.vote.VoteGetListResponse;
 import tgs.vote.application.in.CreateVoteUseCase;
 import tgs.vote.application.in.GetVoteListUseCase;
+import tgs.vote.application.in.GetVoteUseCase;
 import tgs.vote.application.model.vote.CreateVoteInCommand;
 import tgs.vote.domain.vote.Vote;
 
@@ -17,6 +18,7 @@ import tgs.vote.domain.vote.Vote;
 @RestController
 @RequestMapping("/vote")
 public class VoteController {
+    private final GetVoteUseCase getVoteUseCase;
     private final GetVoteListUseCase getVoteListUseCase;
     private final CreateVoteUseCase createVoteUseCase;
     private final VoteMapper voteMapper;
@@ -39,5 +41,14 @@ public class VoteController {
         VoteCreateResponse response = VoteCreateResponse.from(voteId);
 
         return SuccessResponse.of(response);
+    }
+
+    @GetMapping("/{id}")
+    SuccessResponse<Object> getVoteById(@PathVariable final Long id) {
+        Vote vote = getVoteUseCase.getVoteDetail(id);
+
+        //TODO  response setting
+
+        return SuccessResponse.of(vote);
     }
 }

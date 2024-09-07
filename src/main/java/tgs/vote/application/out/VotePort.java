@@ -7,4 +7,6 @@ public interface VotePort {
     Vote save(Vote vote);
 
     List<Vote> getVoteListByCreatorId(Long creatorId);
+
+    Vote getVoteDetail(Long id);
 }
