@@ -4,7 +4,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tgs.vote.adapter.mapper.VoteMapper;
-import tgs.vote.adapter.model.SuccessResponse;
+import tgs.vote.adapter.model.ResponseDTO;
 import tgs.vote.adapter.model.vote.VoteCreateRequest;
 import tgs.vote.adapter.model.vote.VoteCreateResponse;
 import tgs.vote.adapter.model.vote.VoteGetListResponse;
@@ -22,22 +22,22 @@ public class VoteController {
     private final VoteMapper voteMapper;
 
     @GetMapping("/list")
-    SuccessResponse<List<VoteGetListResponse>> getVoteList() {
+    ResponseDTO<List<VoteGetListResponse>> getVoteList() {
         List<Vote> results = getVoteListUseCase.getVoteList();
         List<VoteGetListResponse> responses =
                 results.stream().map(VoteGetListResponse::from).toList();
 
-        return SuccessResponse.of(responses);
+        return ResponseDTO.ofSuccess(responses);
     }
 
     @PostMapping("")
-    SuccessResponse<VoteCreateResponse> createVote(@RequestBody VoteCreateRequest request) {
+    ResponseDTO<VoteCreateResponse> createVote(@RequestBody VoteCreateRequest request) {
         CreateVoteInCommand command = voteMapper.toCreateVoteInCommand(request);
 
         Long voteId = createVoteUseCase.createVote(command);
 
         VoteCreateResponse response = VoteCreateResponse.from(voteId);
 
-        return SuccessResponse.of(response);
+        return ResponseDTO.ofSuccess(response);
     }
 }

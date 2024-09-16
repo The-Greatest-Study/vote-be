@@ -3,7 +3,7 @@ package tgs.vote.adapter.in;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tgs.vote.adapter.mapper.UserMapper;
-import tgs.vote.adapter.model.SuccessResponse;
+import tgs.vote.adapter.model.ResponseDTO;
 import tgs.vote.adapter.model.user.LoginResponse;
 import tgs.vote.adapter.model.user.SlackLoginRequest;
 import tgs.vote.application.in.LoginUseCase;
@@ -17,13 +17,13 @@ public class UserController {
     private final UserMapper mapper;
 
     @PostMapping("/login/slack")
-    public SuccessResponse<LoginResponse> loginWithSlack(@RequestBody SlackLoginRequest request) {
+    public ResponseDTO<LoginResponse> loginWithSlack(@RequestBody SlackLoginRequest request) {
         LoginResponse response =
                 mapper.toLoginResponse(
                         loginUseCase.login(
                                 LoginInCommand.builder()
                                         .authorizationCode(request.code())
                                         .build()));
-        return SuccessResponse.of(response);
+        return ResponseDTO.ofSuccess(response);
     }
 }
