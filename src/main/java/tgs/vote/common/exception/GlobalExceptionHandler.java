@@ -5,15 +5,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import tgs.vote.adapter.model.ErrorResponse;
+import tgs.vote.adapter.model.ResponseDTO;
 
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
-    ResponseEntity<ErrorResponse> handleException(Exception exception) {
+    ResponseEntity<ResponseDTO<?>> handleException(Exception exception) {
         log.error(exception.getLocalizedMessage());
         return new ResponseEntity<>(
-                ErrorResponse.of("ERROR", exception.getLocalizedMessage()), HttpStatus.BAD_REQUEST);
+                ResponseDTO.ofError("ERROR", exception.getLocalizedMessage()),
+                HttpStatus.BAD_REQUEST);
     }
 }
