@@ -1,3 +1,4 @@
 package tgs.vote.adapter.model.user;
 
-public class LoginResponse {}
+public record LoginResponse (String accessToken, String refreshToken, String expiresIn, String tokenType, String scope, String userId, String teamId, String userName) {
+}
