@@ -1,7 +1,9 @@
 package tgs.vote.application;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import tgs.vote.application.in.CreateUserUseCase;
 import tgs.vote.application.in.GetUserUseCase;
 import tgs.vote.application.in.SlackUserUseCase;
 import tgs.vote.application.model.user.*;
@@ -9,9 +11,11 @@ import tgs.vote.application.out.UserOAuth2Port;
 import tgs.vote.domain.user.User;
 
 @RequiredArgsConstructor
+@Log4j2
 @Service
 public class SlackUserService implements SlackUserUseCase {
     private final GetUserUseCase getUserUseCase;
+    private final CreateUserUseCase createUserUseCase;
     private final UserOAuth2Port userOAuth2Port;
 
     @Override
@@ -44,10 +48,21 @@ public class SlackUserService implements SlackUserUseCase {
                                 .build());
 
         if (this.isUserExist(signUpResult.getUserId())) {
+            log.debug("User already exists");
            return SignUpOutResult.builder()
                    .success(false)
                    .build();
         } else {
+            createUserUseCase.createUser(
+                    CreateUserOutCommand.builder()
+                            .providerId(signUpResult.getUserId())
+                            .teamId(signUpResult.getTeamId())
+                            .name(signUpResult.getUserName())
+                            .email(signUpResult.getEmail())
+                            .image(signUpResult.getProfileImageUrl())
+                            .build()
+            );
+
             return SignUpOutResult.builder()
                     .success(true)
                     .userId(signUpResult.getUserId())

@@ -5,6 +5,7 @@ import tgs.vote.adapter.model.user.LoginResponse;
 import tgs.vote.adapter.model.user.SignUpResponse;
 import tgs.vote.adapter.model.user.SlackLoginRequest;
 import tgs.vote.adapter.model.user.UserEntity;
+import tgs.vote.application.model.user.CreateUserOutCommand;
 import tgs.vote.application.model.user.LoginInCommand;
 import tgs.vote.application.model.user.LoginOutResult;
 import tgs.vote.application.model.user.SignUpOutResult;
@@ -16,6 +17,8 @@ public interface UserMapper {
     LoginInCommand toCreateUserInCommand(SlackLoginRequest request);
 
     UserEntity toUserEntity(User user);
+
+    UserEntity toUserEntity(CreateUserOutCommand command);
 
     User toUser(UserEntity userEntity);
 

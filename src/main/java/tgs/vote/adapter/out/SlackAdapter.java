@@ -55,10 +55,10 @@ public class SlackAdapter implements UserOAuth2Port {
     }
 
     @Override
-    public SignUpInResult signUp(SignUpOutCommand build) {
+    public SignUpInResult signUp(SignUpOutCommand command) {
         try {
-            String accessToken = getSlackAccessToken(build.getAuthorizationCode());
-            SlackMember slackMember = getSlackUserInfo(accessToken);
+            String accessToken = this.getSlackAccessToken(command.getAuthorizationCode());
+            SlackMember slackMember = this.getSlackUserInfo(accessToken);
 
             return SignUpInResult.builder()
                     .userId(slackMember.id())
