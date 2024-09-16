@@ -24,6 +24,6 @@ public class UserAdapter implements UserPort {
 
     @Override
     public UserEntity createUser(CreateUserOutCommand user) {
-        return repository.save(mapper.toUserEntity(user)));
+        return repository.save(mapper.toUserEntity(user));
     }
 }

@@ -29,51 +29,27 @@ public class SlackUserService implements SlackUserUseCase {
         User user = getUserUseCase.findByProviderId(loginResult.getProviderId());
 
         if (user != null) {
-            return LoginOutResult.builder().userId(user.getUserId()).isSuccess(true).build();
+            return LoginOutResult.ofSuccess(user.getUserId());
         } else {
-            return LoginOutResult.builder().isSuccess(false).build();
+            return LoginOutResult.ofFalse();
+        }
+    }
+
+    @Override
+    public SignUpOutResult signUp(SignUpInCommand command) {
+        SignUpInResult signUpResult =
+                userOAuth2Port.signUp(SignUpOutCommand.of(command.getAuthorizationCode()));
+
+        if (this.isUserExist(signUpResult.getUserId())) {
+            log.debug("User already exists");
+            return SignUpOutResult.ofFalse();
+        } else {
+            createUserUseCase.createUser(CreateUserOutCommand.of(signUpResult));
+            return SignUpOutResult.ofSuccess(signUpResult);
         }
     }
 
     private boolean isUserExist(String providerId) {
         return getUserUseCase.findByProviderId(providerId) != null;
-    }
-
-    @Override
-    public SignUpOutResult signUp(SignUpInCommand build) {
-        SignUpInResult signUpResult =
-                userOAuth2Port.signUp(
-                        SignUpOutCommand.builder()
-                                .authorizationCode(build.getAuthorizationCode())
-                                .build());
-
-        if (this.isUserExist(signUpResult.getUserId())) {
-            log.debug("User already exists");
-           return SignUpOutResult.builder()
-                   .success(false)
-                   .build();
-        } else {
-            createUserUseCase.createUser(
-                    CreateUserOutCommand.builder()
-                            .providerId(signUpResult.getUserId())
-                            .teamId(signUpResult.getTeamId())
-                            .name(signUpResult.getUserName())
-                            .email(signUpResult.getEmail())
-                            .image(signUpResult.getProfileImageUrl())
-                            .build()
-            );
-
-            return SignUpOutResult.builder()
-                    .success(true)
-                    .userId(signUpResult.getUserId())
-                    .userName(signUpResult.getUserName())
-                    .email(signUpResult.getEmail())
-                    .profileImageUrl(signUpResult.getProfileImageUrl())
-                    .accessToken(signUpResult.getAccessToken())
-                    .expiresIn(signUpResult.getExpiresIn())
-                    .build();
-        }
-        
-
     }
 }
