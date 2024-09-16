@@ -50,7 +50,7 @@ public class VoteAdapter implements VotePort {
 
     @Override
     public List<Vote> getVoteListByCreatorId(Long creatorId) {
-        List<VoteEntity> voteEntityList = voteJpaRepository.findByVoteCreator(creatorId);
+        List<VoteEntity> voteEntityList = voteJpaRepository.findByCreator(creatorId);
 
         return voteMapper.toVotes(voteEntityList);
     }
