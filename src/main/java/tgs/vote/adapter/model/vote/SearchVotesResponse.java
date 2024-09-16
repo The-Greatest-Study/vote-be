@@ -1,8 +1,8 @@
-package tgs.vote.application.model.vote;
+package tgs.vote.adapter.model.vote;
 
 import java.time.LocalDateTime;
 
-public record GetVotesResult(
+public record SearchVotesResponse(
         long voteId,
         String title,
         long creator,

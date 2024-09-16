@@ -1,19 +1,30 @@
 package tgs.vote.adapter.in;
 
+import jakarta.validation.Valid;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import tgs.vote.adapter.mapper.VoteMapper;
 import tgs.vote.adapter.model.ResponseDTO;
+import tgs.vote.adapter.model.vote.SearchVotesRequest;
+import tgs.vote.adapter.model.vote.SearchVotesResponse;
 import tgs.vote.adapter.model.vote.VoteCreateRequest;
 import tgs.vote.adapter.model.vote.VoteCreateResponse;
+import tgs.vote.application.SessionService;
 import tgs.vote.application.in.CreateVoteUseCase;
+import tgs.vote.application.in.SearchVotesUseCase;
 import tgs.vote.application.model.vote.CreateVoteInCommand;
+import tgs.vote.application.model.vote.GetVotesResult;
 
 @RequiredArgsConstructor
-@RestController
+@Validated
 @RequestMapping("/vote")
+@RestController
 public class VoteController {
     private final CreateVoteUseCase createVoteUseCase;
+    private final SearchVotesUseCase searchVotesUseCase;
+
     private final VoteMapper voteMapper;
 
     @PostMapping("")
@@ -25,5 +36,39 @@ public class VoteController {
         VoteCreateResponse response = VoteCreateResponse.from(voteId);
 
         return ResponseDTO.ofSuccess(response);
+    }
+
+    @GetMapping("/in-process")
+    ResponseDTO<List<SearchVotesResponse>> searchInProcessVotes(
+            @ModelAttribute @Valid SearchVotesRequest request) {
+        long userIdFromSession = SessionService.getUserIdFromSession();
+
+        List<GetVotesResult> results =
+                searchVotesUseCase.searchVotesBy(
+                        request.toSearchVotesCommandInProcessType(userIdFromSession));
+
+        return ResponseDTO.ofSuccess(voteMapper.toSearchVotesResponses(results));
+    }
+
+    @GetMapping("/created")
+    ResponseDTO<List<SearchVotesResponse>> searchMyCreatedVotes(SearchVotesRequest request) {
+        long userIdFromSession = SessionService.getUserIdFromSession();
+
+        List<GetVotesResult> results =
+                searchVotesUseCase.searchVotesBy(
+                        request.toSearchVotesCommandCreatedType(userIdFromSession));
+
+        return ResponseDTO.ofSuccess(voteMapper.toSearchVotesResponses(results));
+    }
+
+    @GetMapping("/participated")
+    ResponseDTO<List<SearchVotesResponse>> searchMyParticipatedVotes(SearchVotesRequest request) {
+        long userIdFromSession = SessionService.getUserIdFromSession();
+
+        List<GetVotesResult> results =
+                searchVotesUseCase.searchVotesBy(
+                        request.toSearchVotesCommandParticipatedType(userIdFromSession));
+
+        return ResponseDTO.ofSuccess(voteMapper.toSearchVotesResponses(results));
     }
 }

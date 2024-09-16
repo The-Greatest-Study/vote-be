@@ -5,9 +5,11 @@ import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
+import tgs.vote.adapter.model.vote.SearchVotesResponse;
 import tgs.vote.adapter.model.vote.VoteCreateRequest;
 import tgs.vote.adapter.model.vote.VoteEntity;
 import tgs.vote.application.model.vote.CreateVoteInCommand;
+import tgs.vote.application.model.vote.GetVotesResult;
 import tgs.vote.domain.vote.Vote;
 
 @Mapper
@@ -36,4 +38,10 @@ public interface VoteMapper {
     @Mapping(target = "vote.voteStartDatetime", source = "voteStartDatetime")
     @Mapping(target = "vote.voteEndDatetime", source = "voteEndDatetime")
     CreateVoteInCommand toCreateVoteInCommand(VoteCreateRequest request);
+
+    @Named("toSearchVotesResponse")
+    SearchVotesResponse toSearchVotesResponse(GetVotesResult result);
+
+    @IterableMapping(qualifiedByName = "toSearchVotesResponse")
+    List<SearchVotesResponse> toSearchVotesResponses(List<GetVotesResult> results);
 }
