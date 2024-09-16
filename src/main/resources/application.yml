@@ -29,3 +29,11 @@ slack:
   client-id: ${SLACK_CLIENT_ID}
   client-secret: ${SLACK_CLIENT_SECRET}
   redirect-url: ${SLACK_REDIRECT_URL}
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
