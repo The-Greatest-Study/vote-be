@@ -18,7 +18,7 @@ public class VoteEntity extends BaseEntity {
     private String title;
     private String description;
     private String thumbnail;
-    private Long creator;
+    private Long voteCreator;
     private String accessLevel;
     private String anonymousAvailableYn;
     private String inprogressResultOpenStatus;
