@@ -2,7 +2,6 @@ package tgs.vote.adapter.model.vote;
 
 import java.time.LocalDateTime;
 import org.springframework.data.domain.Sort;
-import tgs.vote.application.model.vote.GetVotesSortItem;
 import tgs.vote.application.model.vote.GetVotesType;
 import tgs.vote.application.model.vote.SearchVotesCommand;
 
@@ -12,7 +11,7 @@ public record SearchVotesRequest(
         LocalDateTime searchStartDateTime,
         LocalDateTime searchEndDateTime,
         Sort.Order sortOrder,
-        GetVotesSortItem sortItem) {
+        SearchVotesSortItem sortItem) {
     public SearchVotesCommand toSearchVotesCommandInProcessType(long userId) {
         return SearchVotesCommand.builder()
                 .getVotesType(GetVotesType.IN_PROCESS)
@@ -22,7 +21,7 @@ public record SearchVotesRequest(
                 .searchStartDateTime(searchStartDateTime)
                 .searchEndDateTime(searchEndDateTime)
                 .sortOrder(sortOrder)
-                .sortItem(sortItem)
+                .sortItem(sortItem.toGetVotesSortItem())
                 .build();
     }
 
@@ -35,7 +34,7 @@ public record SearchVotesRequest(
                 .searchStartDateTime(searchStartDateTime)
                 .searchEndDateTime(searchEndDateTime)
                 .sortOrder(sortOrder)
-                .sortItem(sortItem)
+                .sortItem(sortItem.toGetVotesSortItem())
                 .build();
     }
 
@@ -48,7 +47,7 @@ public record SearchVotesRequest(
                 .searchStartDateTime(searchStartDateTime)
                 .searchEndDateTime(searchEndDateTime)
                 .sortOrder(sortOrder)
-                .sortItem(sortItem)
+                .sortItem(sortItem.toGetVotesSortItem())
                 .build();
     }
 }
