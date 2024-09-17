@@ -21,7 +21,7 @@ import tgs.vote.application.model.vote.GetVotesResult;
 @Validated
 @RequestMapping("/vote")
 @RestController
-public class VoteController {
+public class VoteController implements VoteSwagger {
     private final CreateVoteUseCase createVoteUseCase;
     private final SearchVotesUseCase searchVotesUseCase;
 
@@ -38,8 +38,9 @@ public class VoteController {
         return ResponseDTO.ofSuccess(response);
     }
 
+    @Override
     @GetMapping("/in-process")
-    ResponseDTO<List<SearchVotesResponse>> searchInProcessVotes(
+    public ResponseDTO<List<SearchVotesResponse>> searchInProcessVotes(
             @ModelAttribute @Valid SearchVotesRequest request) {
         long userIdFromSession = SessionService.getUserIdFromSession();
 
@@ -50,8 +51,10 @@ public class VoteController {
         return ResponseDTO.ofSuccess(voteMapper.toSearchVotesResponses(results));
     }
 
+    @Override
     @GetMapping("/created")
-    ResponseDTO<List<SearchVotesResponse>> searchMyCreatedVotes(SearchVotesRequest request) {
+    public ResponseDTO<List<SearchVotesResponse>> searchMyCreatedVotes(
+            @ModelAttribute @Valid SearchVotesRequest request) {
         long userIdFromSession = SessionService.getUserIdFromSession();
 
         List<GetVotesResult> results =
@@ -61,8 +64,10 @@ public class VoteController {
         return ResponseDTO.ofSuccess(voteMapper.toSearchVotesResponses(results));
     }
 
+    @Override
     @GetMapping("/participated")
-    ResponseDTO<List<SearchVotesResponse>> searchMyParticipatedVotes(SearchVotesRequest request) {
+    public ResponseDTO<List<SearchVotesResponse>> searchMyParticipatedVotes(
+            @ModelAttribute @Valid SearchVotesRequest request) {
         long userIdFromSession = SessionService.getUserIdFromSession();
 
         List<GetVotesResult> results =

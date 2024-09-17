@@ -1,6 +1,6 @@
 package tgs.vote.application.model.vote;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import lombok.Builder;
 import org.springframework.data.domain.Sort;
@@ -11,7 +11,7 @@ public record GetVotesCommand(
         long userId,
         String voteTitle,
         List<Long> voteCreatorUserIds,
-        LocalDateTime searchStartDateTime,
-        LocalDateTime searchEndDateTime,
-        Sort.Order sortOrder,
+        LocalDate searchStartDate,
+        LocalDate searchEndDate,
+        Sort.Direction sortDirection,
         GetVotesSortItem sortItem) {}
