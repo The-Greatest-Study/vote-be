@@ -12,7 +12,7 @@ public class CreateUserOutCommand {
     private String email;
     private String image;
 
-    public static CreateUserOutCommand of(SignUpInResult signUpInResult){
+    public static CreateUserOutCommand of(SignUpInResult signUpInResult) {
         return CreateUserOutCommand.builder()
                 .providerId(signUpInResult.getUserId())
                 .teamId(signUpInResult.getTeamId())

@@ -10,11 +10,11 @@ public class LoginOutResult {
     private Long userId;
     private boolean isSuccess;
 
-    public static LoginOutResult ofFalse(){
+    public static LoginOutResult ofFalse() {
         return LoginOutResult.builder().isSuccess(false).build();
     }
 
-    public static LoginOutResult ofSuccess(Long userId){
+    public static LoginOutResult ofSuccess(Long userId) {
         return LoginOutResult.builder().userId(userId).isSuccess(true).build();
     }
 }

@@ -29,13 +29,11 @@ public class SlackTokenResponse {
     @JsonProperty("authed_user")
     private AuthedUser authedUser;
 
-
     @Getter
     @AllArgsConstructor
     public static class Team {
         private String name;
         private String id;
-
     }
 
     @Getter
@@ -43,7 +41,6 @@ public class SlackTokenResponse {
     public static class Enterprise {
         private String name;
         private String id;
-
     }
 
     @Getter
@@ -57,7 +54,5 @@ public class SlackTokenResponse {
 
         @JsonProperty("token_type")
         private String tokenType;
-
     }
-
 }

@@ -18,13 +18,11 @@ public class SignUpOutResult {
     private String email;
     private String profileImageUrl;
 
-    public static SignUpOutResult ofFalse(){
-        return SignUpOutResult.builder()
-                .success(false)
-                .build();
+    public static SignUpOutResult ofFalse() {
+        return SignUpOutResult.builder().success(false).build();
     }
 
-    public static SignUpOutResult ofSuccess(SignUpInResult signUpResult){
+    public static SignUpOutResult ofSuccess(SignUpInResult signUpResult) {
         return SignUpOutResult.builder()
                 .success(true)
                 .userId(signUpResult.getUserId())
@@ -35,5 +33,4 @@ public class SignUpOutResult {
                 .expiresIn(signUpResult.getExpiresIn())
                 .build();
     }
-
 }

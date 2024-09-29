@@ -17,13 +17,13 @@ public class UserAdapter implements UserPort {
     private final UserMapper mapper;
 
     @Override
-    public UserEntity findByProviderId(GetUserByProviderIdOutCommand command) {
-        return repository.findByProviderId(command.providerId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    public User findByProviderId(GetUserByProviderIdOutCommand command) {
+        return mapper.toUser(
+                repository.findByProviderId(command.providerId).orElse(new UserEntity()));
     }
 
     @Override
-    public UserEntity createUser(CreateUserOutCommand user) {
-        return repository.save(mapper.toUserEntity(user));
+    public User createUser(CreateUserOutCommand user) {
+        return mapper.toUser(repository.save(mapper.toUserEntity(user)));
     }
 }

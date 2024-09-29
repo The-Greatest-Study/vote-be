@@ -3,7 +3,6 @@ package tgs.vote.adapter.out;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -57,7 +56,7 @@ public class SlackAdapter implements UserOAuth2Port {
     @Override
     public SignUpInResult signUp(SignUpOutCommand command) {
         try {
-            String accessToken = this.getSlackAccessToken(command.getAuthorizationCode());
+            String accessToken = this.getSlackAccessToken(command.authorizationCode());
             SlackMember slackMember = this.getSlackUserInfo(accessToken);
 
             return SignUpInResult.builder()
@@ -88,12 +87,9 @@ public class SlackAdapter implements UserOAuth2Port {
 
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(body, headers);
 
-        ResponseEntity<SlackTokenResponse> response = restTemplate.exchange(
-                tokenEndpoint,
-                HttpMethod.POST,
-                requestEntity,
-                SlackTokenResponse.class
-        );
+        ResponseEntity<SlackTokenResponse> response =
+                restTemplate.exchange(
+                        tokenEndpoint, HttpMethod.POST, requestEntity, SlackTokenResponse.class);
 
         if (!Objects.requireNonNull(response.getBody()).isOk()) {
             throw new Exception("Failed to obtain Slack access token");
@@ -111,12 +107,9 @@ public class SlackAdapter implements UserOAuth2Port {
 
         HttpEntity<String> requestEntity = new HttpEntity<>(headers);
 
-        ResponseEntity<SlackUserResponse> response = restTemplate.exchange(
-                userInfoEndpoint,
-                HttpMethod.GET,
-                requestEntity,
-                SlackUserResponse.class
-        );
+        ResponseEntity<SlackUserResponse> response =
+                restTemplate.exchange(
+                        userInfoEndpoint, HttpMethod.GET, requestEntity, SlackUserResponse.class);
 
         if (!Objects.requireNonNull(response.getBody()).ok()) {
             throw new Exception("Failed to obtain Slack user info");
@@ -124,5 +117,4 @@ public class SlackAdapter implements UserOAuth2Port {
 
         return response.getBody().user();
     }
-
 }

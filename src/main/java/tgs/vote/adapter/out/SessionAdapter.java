@@ -15,5 +15,4 @@ public class SessionAdapter implements SessionPort {
         UserSession userSession = this.getUserSession();
         return userSession.getUserId();
     }
-
 }

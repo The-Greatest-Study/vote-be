@@ -31,13 +31,14 @@ public class UserController {
     }
 
     @PostMapping("/signup/slack")
-    public SuccessResponse<SignUpResponse> signUpWithSlack(@RequestBody SlackSignUpRequest request) {
+    public ResponseDTO<SignUpResponse> signUpWithSlack(@RequestBody SlackSignUpRequest request) {
         SignUpResponse response =
                 mapper.toSignUpResponse(
-                        slackUserUseCase.signUp(SignUpInCommand.builder()
+                        slackUserUseCase.signUp(
+                                SignUpInCommand.builder()
                                         .authorizationCode(request.code())
                                         .redirectUri(request.redirectUri())
-                                .build()));
-        return SuccessResponse.of(response);
+                                        .build()));
+        return ResponseDTO.ofSuccess(response);
     }
 }
