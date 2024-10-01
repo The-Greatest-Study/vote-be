@@ -1,5 +1,6 @@
 package tgs.vote.adapter.out;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import tgs.vote.adapter.mapper.UserMapper;
@@ -17,5 +18,10 @@ public class UserAdapter implements UserPort {
     @Override
     public User findByProviderId(GetUserByProviderIdOutCommand command) {
         return repository.findByProviderId(command.providerId).map(mapper::toUser).orElse(null);
+    }
+
+    @Override
+    public List<User> findByUserName(String userName) {
+        return null;
     }
 }

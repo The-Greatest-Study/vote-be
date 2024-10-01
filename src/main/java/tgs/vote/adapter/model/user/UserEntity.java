@@ -4,10 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
 import tgs.vote.adapter.model.BaseEntity;
 
-@Entity(name = "tb_user")
+@Entity(name = "User")
+@Table(name = "tb_user")
 @NoArgsConstructor
 public class UserEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -12,6 +12,8 @@ import tgs.vote.adapter.model.vote.VoteEntity;
 import tgs.vote.adapter.out.persistance.ChoiceJpaRepository;
 import tgs.vote.adapter.out.persistance.QuestionJpaRepository;
 import tgs.vote.adapter.out.persistance.VoteJpaRepository;
+import tgs.vote.application.model.vote.GetVotesCommand;
+import tgs.vote.application.model.vote.GetVotesResult;
 import tgs.vote.application.out.VotePort;
 import tgs.vote.domain.vote.Choice;
 import tgs.vote.domain.vote.Question;
@@ -49,9 +51,7 @@ public class VoteAdapter implements VotePort {
     }
 
     @Override
-    public List<Vote> getVoteListByCreatorId(Long creatorId) {
-        List<VoteEntity> voteEntityList = voteJpaRepository.findByCreator(creatorId);
-
-        return voteMapper.toVotes(voteEntityList);
+    public List<GetVotesResult> findVotesBy(GetVotesCommand command) {
+        return voteJpaRepository.findVotesWithCount();
     }
 }
