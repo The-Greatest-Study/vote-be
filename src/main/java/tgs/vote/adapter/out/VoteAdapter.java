@@ -52,6 +52,6 @@ public class VoteAdapter implements VotePort {
 
     @Override
     public List<GetVotesResult> findVotesBy(GetVotesCommand command) {
-        return null;
+        return voteJpaRepository.findVotesWithCount();
     }
 }
