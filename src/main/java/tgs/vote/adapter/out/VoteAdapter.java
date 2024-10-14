@@ -54,4 +54,11 @@ public class VoteAdapter implements VotePort {
 
         return voteMapper.toVotes(voteEntityList);
     }
+
+    @Override
+    public Vote getVoteByVoteId(Long voteId) {
+        VoteEntity voteEntity = voteJpaRepository.findByVoteId(voteId);
+
+        return voteMapper.toVote(voteEntity);
+    }
 }

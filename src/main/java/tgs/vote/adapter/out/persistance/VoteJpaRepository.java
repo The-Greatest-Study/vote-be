@@ -10,6 +10,8 @@ import tgs.vote.adapter.model.vote.VoteEntity;
 public interface VoteJpaRepository extends JpaRepository<VoteEntity, Long> {
     List<VoteEntity> findByVoteCreator(long voteCreator);
 
+    VoteEntity findByVoteId(long voteId);
+
     @Query(value = "SELECT MAX(vote_id) FROM tb_vote", nativeQuery = true)
     Long findMaxId();
 }

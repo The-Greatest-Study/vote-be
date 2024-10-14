@@ -5,8 +5,11 @@ import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
+
+import tgs.vote.adapter.model.vote.DoVoteCreateRequest;
 import tgs.vote.adapter.model.vote.VoteCreateRequest;
 import tgs.vote.adapter.model.vote.VoteEntity;
+import tgs.vote.application.model.vote.CreateDoVoteInCommand;
 import tgs.vote.application.model.vote.CreateVoteInCommand;
 import tgs.vote.domain.vote.Vote;
 
@@ -36,4 +39,7 @@ public interface VoteMapper {
     @Mapping(target = "vote.voteStartDatetime", source = "voteStartDatetime")
     @Mapping(target = "vote.voteEndDatetime", source = "voteEndDatetime")
     CreateVoteInCommand toCreateVoteInCommand(VoteCreateRequest request);
+
+    @Mapping(target = "vote.voteId", source = "voteId")
+    CreateDoVoteInCommand toCreateDoVoteInCommand(DoVoteCreateRequest request);
 }
